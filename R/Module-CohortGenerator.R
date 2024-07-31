@@ -30,13 +30,13 @@ CohortGeneratorModule <- R6::R6Class(
       jobContext <- private$jobContext
       cohortDefinitionSet <- super$.createCohortDefinitionSetFromJobContext()
 
-      if (!is.null(jobContext$settings$refactor) &&
-          jobContext$settings$refactor) {
+      # if (!is.null(jobContext$settings$refactor) &&
+      #     jobContext$settings$refactor) {
         for (i in 1:nrow(cohortDefinitionSet)) {
           newSql <- VaTools::translateToCustomVaSqlText(cohortDefinitionSet$sql[i], NULL)
           cohortDefinitionSet$sql[i] <- newSql
         }
-      }
+      # }
 
       negativeControlOutcomeSettings <- private$.createNegativeControlOutcomeSettingsFromJobContext()
       resultsFolder <- jobContext$moduleExecutionSettings$resultsSubFolder
